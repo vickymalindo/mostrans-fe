@@ -15,10 +15,10 @@ const CharactersByLocation = () => {
   const characterLocation = JSON.parse(dataString);
 
   React.useEffect(() => {
-    setLoading((prev) => (prev = true));
+    setLoading(true);
     setTimeout(() => {
       if (selectedOption === null) {
-        setLoading((prev) => (prev = false));
+        setLoading(false);
         return;
       }
       const idx = location.findIndex(
@@ -27,12 +27,12 @@ const CharactersByLocation = () => {
       const isEmptyCharacterByLocation = Object.entries(characterLocation[idx]);
       if (isEmptyCharacterByLocation.length === 0) {
         setData([]);
-        setLoading((prev) => (prev = false));
+        setLoading(false);
         return;
       }
       const tempData = characterLocation[idx].selectedOption;
       setData(tempData);
-      setLoading((prev) => (prev = false));
+      setLoading(false);
     }, 1000);
   }, [selectedOption]);
 
